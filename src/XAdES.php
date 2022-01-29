@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Eugenio Bonifacio
@@ -92,7 +93,7 @@ class XAdES implements SignatureInterface
                 ]
             );
 
-            $objKey = new XMLSecurityKey(XMLSecurityKey::RSA_SHA256, ['type'=>'private']);
+            $objKey = new XMLSecurityKey(XMLSecurityKey::RSA_SHA256, ['type' => 'private']);
 
             /* load private key */
             $objKey->loadKey($this->pvk);
@@ -116,10 +117,10 @@ class XAdES implements SignatureInterface
             $obj1 = $doc->createElementNS($sp, 'xades:QualifyingProperties');
             $obj1->setAttribute('Target', '#Signature1');
 
-            $props = $doc->createElementNS($sp,'xades:SignedProperties');
+            $props = $doc->createElementNS($sp, 'xades:SignedProperties');
             $props->setAttribute('Id', 'SignedProperties_1');
-            $sigprops = $doc->createElementNS($sp,'xades:SignedSignatureProperties');
-            $time = $doc->createElementNS($sp,'xades:SigningTime', (new DateTime())->format(DateTime::RFC3339));
+            $sigprops = $doc->createElementNS($sp, 'xades:SignedSignatureProperties');
+            $time = $doc->createElementNS($sp, 'xades:SigningTime', (new DateTime())->format(DateTime::RFC3339));
 
             $sigprops->appendChild($time);
             $props->appendChild($sigprops);
